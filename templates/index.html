@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Face Expression Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="top-header">
+    <h1>Face Expression Prediction</h1>
+  </header>
+
+  <main>
+    {% if prediction or image_path %}
+        <!-- Kalau ada hasil: tampil 2 kolom -->
+        <div class="container">
+            <!-- Form -->
+            <form action="/" method="POST" enctype="multipart/form-data" class="form-box">
+                <label for="image">Upload Image</label><br>
+                <input type="file" name="image" id="image" accept="image/*" required><br><br>
+
+                <label for="method">Select Method</label><br>
+                <select name="method" id="method" required>
+                    <option value="hog8x8">HOG 8x8</option>
+                    <option value="hog16x16">HOG 16x16</option>
+                    <option value="hog8x8_pca">HOG 8x8 + PCA</option>
+                    <option value="hog16x16_pca">HOG 16x16 + PCA</option>
+                    <option value="odlbp">OD-LBP</option>
+                    <option value="odlbp_pca">OD-LBP + PCA</option>
+                </select><br><br>
+
+                <button type="submit">Predict Expression</button>
+            </form>
+
+            <!-- Hasil -->
+            <div class="result-box">
+                {% if prediction %}
+                    <div class="result">
+                        <h2>Prediction: {{ prediction }}</h2>
+                        <p>Confidence: {{ confidence | round(2) }}%</p>
+                    </div>
+                {% endif %}
+
+                {% if image_path %}
+                    <div class="image-preview">
+                        <p>Uploaded Image:</p>
+                        <img src="{{ image_path }}" alt="Uploaded Image" width="256">
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    {% else %}
+        <!-- Kalau belum ada hasil: hanya form, ditengah -->
+        <div class="single-form">
+            <form action="/" method="POST" enctype="multipart/form-data" class="form-box">
+                <label for="image">Upload Image:</label><br>
+                <input type="file" name="image" id="image" accept="image/*" required><br><br>
+
+                <label for="method">Select Method:</label><br>
+                <select name="method" id="method" required>
+                    <option value="hog8x8">HOG 8x8</option>
+                    <option value="hog16x16">HOG 16x16</option>
+                    <option value="hog8x8_pca">HOG 8x8 + PCA</option>
+                    <option value="hog16x16_pca">HOG 16x16 + PCA</option>
+                    <option value="odlbp">OD-LBP</option>
+                    <option value="odlbp_pca">OD-LBP + PCA</option>
+                </select><br><br>
+
+                <button type="submit">Predict Expression</button>
+            </form>
+        </div>
+    {% endif %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>
+      <strong>Created by :</strong> Frans Vito Jonathan Simamora | 
+      <a href="https://orcid.org/0009-0004-8243-3500" target="_blank">ORCID</a> | 
+      <a href="mailto:fransjonathan2002@gmail.com">fransjonathan2002@gmail.com</a>
+    </p>
+    <p>
+      <strong>Supported by :</strong>  
+      Tio Dharmawan | <a href="https://orcid.org/0000-0003-3692-2691" target="_blank">ORCID</a> | 
+      <a href="mailto:tio.pssi@unej.ac.id">tio.pssi@unej.ac.id</a> <br>
+      Muhamad Arief Hidayat | <a href="https://orcid.org/0009-0000-4195-188X" target="_blank">ORCID</a> | 
+      <a href="mailto:arief.hidayat@unej.ac.id">arief.hidayat@unej.ac.id</a>
+    </p>
+  </footer>
+</body>
+</html>

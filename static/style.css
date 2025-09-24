@@ -1,0 +1,148 @@
+/* Reset dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    text-align: center;
+}
+
+/* Header fixed di atas */
+.top-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* tinggi header */
+    background-color: #2e86de; 
+    display: flex;
+    align-items: center;
+    padding-bottom: 200px;
+    padding: 0 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Judul header */
+.top-header h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    text-align: left;
+}
+
+main {
+    background-color: #f4f6f8; /* putih untuk konten */
+    padding: 40px;
+}
+
+
+/* Container hasil + form */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    margin-top: 30px;
+    flex-wrap: wrap; /* biar responsif */
+}
+
+/* Layout hanya form di tengah */
+.single-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px); /* penuh layar tanpa nutup header */
+}
+
+/* Box form dan hasil */
+.form-box, .result-box {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    width: 350px;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Label form */
+label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Input & tombol */
+input[type="file"], select, button {
+    font-size: 16px;
+    padding: 10px;
+    margin: 8px 0 15px;
+    width: 260px;
+}
+
+/* Tombol */
+button {
+    background-color: #2e86de;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #1b4f72;
+}
+
+/* Hasil prediksi */
+.result {
+    margin-bottom: 8px;
+}
+
+.result p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+/* Preview gambar */
+.image-preview {
+    margin-top: 10px;
+}
+
+img {
+    max-width: 100%;  /* biar responsif */
+    height: auto;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.footer {
+    background-color: #2e86de; /* sama dengan header */
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 14px;
+}
+
+.footer a {
+    color: #ffdd57; /* kuning keemasan biar kontras */
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
